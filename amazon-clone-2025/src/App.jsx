@@ -5,16 +5,18 @@ import Header from './Components/Header/Header'
 import CarouselEffect from './Components/Carousel/CarouselEffect'
 import Catagory from './Components/Catagory/Catagory'
 import Product from './Components/Products/Product'
+import Routing from './Routing'
 
 function App() {
   
 
   return (
     <>
-    <Header/>
+    <Routing/>
+    {/* <Header/>
     <CarouselEffect/>
     <Catagory/>
-    <Product/>
+    <Product/> */}
     </>
   )
 }
