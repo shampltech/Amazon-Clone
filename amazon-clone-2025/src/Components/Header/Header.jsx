@@ -5,9 +5,15 @@ import { BiCart } from "react-icons/bi";
 import classes from './Header.module.css'
 import LowerHeader from './LowerHeader';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { DataContaxt } from '../DataProvider/DataProvider';
 const Header = () => {
+  const [{basket},dispach] = useContext(DataContaxt)
+  const totalItems = basket?.reduce((amount,item)=>{
+    return item.amount + amount
+  },0)
   return (
-    <>
+    <section className={classes.fixed}>
       <section>
         <div className={classes.header_container}>
           <div className={classes.logo_container}>
@@ -64,14 +70,14 @@ const Header = () => {
             </Link>
             {/* cart */}
             <Link to="/cart" className={classes.cart}>
-              <BiCart size={35}/>
-              <span>0</span>
+              <BiCart size={35} />
+              <span>{totalItems}</span>
             </Link>
           </div>
         </div>
       </section>
-      <LowerHeader/>
-    </>
+      <LowerHeader />
+    </section>
   );
 }
 

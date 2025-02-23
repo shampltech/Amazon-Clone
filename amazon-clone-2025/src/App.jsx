@@ -13,10 +13,7 @@ function App() {
   return (
     <>
     <Routing/>
-    {/* <Header/>
-    <CarouselEffect/>
-    <Catagory/>
-    <Product/> */}
+    
     </>
   )
 }
