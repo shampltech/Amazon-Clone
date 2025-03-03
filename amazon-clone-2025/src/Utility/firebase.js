@@ -5,12 +5,12 @@ import "firebase/compat/firestore"
 import "firebase/compat/auth"
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDve7yhHedj_malvkTyPB5-37MsjSPkAFk",
-  authDomain: "clone-83faf.firebaseapp.com",
-  projectId: "clone-83faf",
-  storageBucket: "clone-83faf.firebasestorage.app",
-  messagingSenderId: "53470120980",
-  appId: "1:53470120980:web:26ff10bd44a93e1c476b01",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
