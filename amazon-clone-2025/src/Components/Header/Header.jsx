@@ -74,7 +74,7 @@ const Header = () => {
             </div>
           </Link>
           {/* orders */}
-          <Link to="/order">
+          <Link to="/orders">
             <p>returns</p>
             <span> &orders</span>
           </Link>

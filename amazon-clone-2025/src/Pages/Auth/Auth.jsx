@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import styles from './SignUp.module.css'
 import {auth} from '../../Utility/firebase'
 import { signInWithEmailAndPassword,createUserWithEmailAndPassword, signOut } from 'firebase/auth'
@@ -18,6 +18,9 @@ function Auth() {
   const navigate=useNavigate()
   // console.log(user)
 
+  const navigateStateData=useLocation()
+
+
    const authHandler=async(e)=>{
     e.preventDefault()
     // console.log(e.target.name)
@@ -30,7 +33,7 @@ signInWithEmailAndPassword(auth,email,password).then((userData)=>{
   user:userData.user
   })
 setLoading({...loading,signIn:false})
-navigate("/")
+navigate(navigateStateData?.state?.redirect ||"/")
 }).catch((err)=>{
   setError(err.message)
   setLoading({...loading,signIn:false})
@@ -44,7 +47,7 @@ createUserWithEmailAndPassword(auth,email,password).then((userData)=>{
     user:userData.user
   })
   setLoading({...loading,signUp:false})
-  navigate("/")
+  navigate(navigateStateData?.state?.redirect || "/");
 
 }).catch((err)=>{
   setError(err.message)
@@ -61,6 +64,11 @@ createUserWithEmailAndPassword(auth,email,password).then((userData)=>{
       <div className={styles.login_container}>
         <form action="">
           <h1>Sign In</h1>
+          {navigateStateData?.state?.msg && (
+            <small style={{padding:"5px",color:"red",textAlign:"center",fontWeight:"bold"}}>
+              {navigateStateData?.state?.msg}
+            </small>
+          )}
 
           <div>
             <label htmlFor="email">Email</label>
